@@ -16,6 +16,8 @@ tokens = [
   'SEMICOLON',
   'LCURLY',
   'RCURLY',
+  'LPAREN',
+  'RPAREN',
   'ASSIGN',
   'PLUS',
   'MINUS',
@@ -31,8 +33,10 @@ tokens = [
 # Simple lexical rules
 t_DOT = r'\.'
 t_SEMICOLON = r';'
-t_LCURLY = r'\('
-t_RCURLY = r'\)'
+t_LCURLY = r'\{'
+t_RCURLY = r'\}'
+t_LPAREN = r'\('
+t_RPAREN = r'\)'
 t_ASSIGN = r'='
 t_PLUS = r'\+'
 t_MINUS = r'-'
