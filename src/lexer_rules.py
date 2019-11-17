@@ -25,9 +25,8 @@ tokens = [
   'GREATHERTHAN',
   'EQUAL',
   'COLON',
-  'IDENT',
   'CONST',
-  'ID'
+  'IDENT'
 ] + list(reserved.values())
 
 # Simple lexical rules
@@ -44,16 +43,18 @@ t_LESSTHAN = r'<'
 t_GREATHERTHAN = r'>'
 t_EQUAL = r'=='
 t_COLON = r','
-t_IDENT = r'[a-zA-Z_][a-zA-Z0-9_]*'
 
 # A string containing ignored characters (spaces, tabs and new lines)
-t_ignore  = ' \t'
+t_ignore = ' \t'
+t_ignore_COMMENT = r'\#.*'
 
-def t_ID(t):
+def t_IDENT(t):
+  # r'[a-zA-Z_][a-zA-Z0-9_]*'
   r'[a-zA-Z_][a-zA-Z_0-9]*'
   # Check for reserved words
-  t.type = reserved.get(t.value,'IDENT')
+  t.type = reserved.get(t.value, 'IDENT')
   return t
+
 
 # Complex lexical rules
 def t_CONST(token):
@@ -61,9 +62,11 @@ def t_CONST(token):
   token.value = int(token.value)
   return token
 
+
 def t_NEWLINE(token):
   r'\n+'
   token.lexer.lineno += len(token.value)
+
 
 def t_error(token):
   message = 'Token desconocido:'
