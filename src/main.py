@@ -1,7 +1,6 @@
 from ply.lex import lex
 import lexer_rules
 from os import path
-
 from helpers import find_column
 
 script_dir = path.dirname(__file__)

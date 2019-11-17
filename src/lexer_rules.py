@@ -1,32 +1,32 @@
 # Reserved words
 reserved = {
-  'var': 'VAR',
-  'if': 'IF',
-  'then': 'THEN',
-  'else': 'ELSE',
-  'while': 'WHILE',
-  'do': 'DO',
-  'input': 'INPUT',
-  'output': 'OUTPUT'
+    'var': 'VAR',
+    'if': 'IF',
+    'then': 'THEN',
+    'else': 'ELSE',
+    'while': 'WHILE',
+    'do': 'DO',
+    'input': 'INPUT',
+    'output': 'OUTPUT'
 }
 
 # List of tokens (characters and symbolss)
 tokens = [
-  'DOT',
-  'SEMICOLON',
-  'LCURLY',
-  'RCURLY',
-  'LPAREN',
-  'RPAREN',
-  'ASSIGN',
-  'PLUS',
-  'MINUS',
-  'LESSTHAN',
-  'GREATHERTHAN',
-  'EQUAL',
-  'COLON',
-  'CONST',
-  'IDENT'
+    'DOT',
+    'SEMICOLON',
+    'LCURLY',
+    'RCURLY',
+    'LPAREN',
+    'RPAREN',
+    'ASSIGN',
+    'PLUS',
+    'MINUS',
+    'LESSTHAN',
+    'GREATHERTHAN',
+    'EQUAL',
+    'COLON',
+    'CONST',
+    'IDENT'
 ] + list(reserved.values())
 
 # Simple lexical rules
@@ -48,30 +48,31 @@ t_COLON = r','
 t_ignore = ' \t'
 t_ignore_COMMENT = r'\#.*'
 
+
 def t_IDENT(t):
-  # r'[a-zA-Z_][a-zA-Z0-9_]*'
-  r'[a-zA-Z_][a-zA-Z_0-9]*'
-  # Check for reserved words
-  t.type = reserved.get(t.value, 'IDENT')
-  return t
+    # r'[a-zA-Z_][a-zA-Z0-9_]*'
+    r'[a-zA-Z_][a-zA-Z_0-9]*'
+    # Check for reserved words
+    t.type = reserved.get(t.value, 'IDENT')
+    return t
 
 
 # Complex lexical rules
 def t_CONST(token):
-  r'[1-9][0-9]*'
-  token.value = int(token.value)
-  return token
+    r'[1-9][0-9]*'
+    token.value = int(token.value)
+    return token
 
 
 def t_NEWLINE(token):
-  r'\n+'
-  token.lexer.lineno += len(token.value)
+    r'\n+'
+    token.lexer.lineno += len(token.value)
 
 
 def t_error(token):
-  message = 'Token desconocido:'
-  message = '\nType: ' + token.type
-  message += '\nValue: ' + str(token.value)
-  message += '\nLine: ' + str(token.lineno)
-  message += '\nPosition: ' + str(token.lexpos)
-  raise Exception(message)
+    message = 'Token desconocido:'
+    message = '\nType: ' + token.type
+    message += '\nValue: ' + str(token.value)
+    message += '\nLine: ' + str(token.lineno)
+    message += '\nPosition: ' + str(token.lexpos)
+    raise Exception(message)
