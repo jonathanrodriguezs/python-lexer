@@ -63,7 +63,6 @@ def t_CONST(token):
 
 def t_NEWLINE(token):
   r'\n+'
-  # print("\nLÍNEA {}:".format(token.lexer.lineno))
   token.lexer.lineno += len(token.value)
 
 def t_error(token):
