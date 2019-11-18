@@ -1,5 +1,7 @@
 from ply.lex import lex
+from ply.yacc import yacc
 import lexer_rules
+import parser_rules
 from os import path
 from helpers import find_column
 
@@ -10,8 +12,8 @@ f = open(source_code, 'r')
 
 text = f.read()
 lexer = lex(module=lexer_rules)
-lexer.input(text)
 
-for token in lexer:
-    print('{}: {}'.format(token.type, token.value))
-    # print(token)
+parser = yacc(module=parser_rules)
+
+expression = parser.parse(text)
+print(expression.evaluate())
