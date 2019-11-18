@@ -1,4 +1,6 @@
 __pycache__
 poetry.lock
+parsetab.py
+parser.out
 .vscode
 env
