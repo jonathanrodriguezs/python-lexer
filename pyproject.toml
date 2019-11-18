@@ -7,6 +7,7 @@ authors = ["Jonathan Rodriguez Sanchez <jonathan.rodriguezs@softtek.com>"]
 [tool.poetry.dependencies]
 python = "^3.7"
 ply = "^3.11"
+prettytable = "^0.7.2"
 
 [tool.poetry.dev-dependencies]
 
