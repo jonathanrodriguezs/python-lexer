@@ -1,7 +1,7 @@
 from ply.lex import lex
 import lexer_rules
 from os import path
-from helpers import find_column
+from helpers import print_lexer_table
 
 script_dir = path.dirname(__file__)
 source_code = path.join(script_dir, 'program.txt')
@@ -12,6 +12,4 @@ text = f.read()
 lexer = lex(module=lexer_rules)
 lexer.input(text)
 
-for token in lexer:
-    print('{}: {}'.format(token.type, token.value))
-    # print(token)
+print_lexer_table(lexer)

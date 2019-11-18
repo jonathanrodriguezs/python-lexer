@@ -1,4 +1,7 @@
+lexer_table.txt
+parsetab.py
 __pycache__
 poetry.lock
+parser.out
 .vscode
 env
