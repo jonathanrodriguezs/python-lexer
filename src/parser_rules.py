@@ -11,7 +11,14 @@ def p_program_statements(p):
 
 
 def p_statements_statements(p):
-    'statements: statements ";" statement'
+    '''
+        statements: statements ";" statement
+                  | statement
+    '''
+    if len(p) == 2:
+        p[0] = [p[1]]
+    else:
+        p[0] = p[1] + [p[3]]
 
 
 def p_statement_curly(p):
@@ -33,15 +40,15 @@ def p_statements_statement(p):
 
 
 def p_var_statement_colon_ident(p):
-    'var-statement: var-statement "," ident'
+    'var-statement: var-statement "," IDENT'
 
 
 def p_var_statement_ident(p):
-    'var-statement: "var" ident'
+    'var-statement: "var" IDENT'
 
 
 def p_assin_stat(p):
-    'assign-stat: ident "=" expr'
+    'assign-stat: IDENT "=" expr'
 
 
 def p_expr_parens(p):
@@ -78,8 +85,8 @@ def p_expr_value(p):
 
 def p_value_ident(p):
     '''
-      value: ident
-           | const
+      value: IDENT
+           | CONST
     '''
     p[0] = p[1]
 
@@ -93,15 +100,15 @@ def p_if_statement(p):
 
 
 def p_if_then(p):
-    'if-then: if-part "then" statement'
+    'if-then: if-part THEN statement'
 
 
 def p_if_then_else(p):
-    'if-then-else: if-then "else" statement'
+    'if-then-else: if-then ELSE statement'
 
 
 def p_if_part(p):
-    'if-part: "if" log-expr'
+    'if-part: IF log-expr'
 
 
 def p_log_expr(p):
@@ -123,19 +130,19 @@ def p_while_stat(p):
 
 
 def p_while_part(p):
-    'while-part: "while" log-expr'
+    'while-part: WHILE log-expr'
 
 
 def p_do_expr(p):
-    'do-expr: "do" statement'
+    'do-expr: DO statement'
 
 
 def p_input_statement(p):
-    'input-stat: "input" ident'
+    'input-stat: INPUT IDENT'
 
 
 def p_output_statement(p):
-    'output-stat: "output" expr'
+    'output-stat: OUTPUT expr'
 
 
 def p_error(expr):
