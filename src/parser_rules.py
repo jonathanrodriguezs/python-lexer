@@ -20,25 +20,31 @@ def p_statement_curly(p):
     p[0] = p[2]
 
 
+def p_statements_stat(p):
+    'statements : statement'
+    p[0] = p[1]
+
+
 def p_statements_statement(p):
     '''
-      statements : statement
-                 | assign-stat
-                 | if-stat
-                 | while-stat
-                 | input-stat
-                 | output-stat
-                 | var-statement
+      statement : assign-stat
+                | if-stat
+                | while-stat
+                | input-stat
+                | output-stat
+                | var-statement
     '''
     p[0] = p[1]
 
 
 def p_var_statement_colon_ident(p):
     'var-statement : var-statement "," IDENT'
+    pass
 
 
 def p_var_statement_ident(p):
     'var-statement : VAR IDENT'
+    pass
 
 
 def p_assin_stat(p):
@@ -133,10 +139,13 @@ def p_do_expr(p):
 
 def p_input_statement(p):
     'input-stat : INPUT IDENT'
+    p[0] = ['INPUT', p[2]]
 
 
 def p_output_statement(p):
     'output-stat : OUTPUT expr'
+    print(p[2])
+    p[0] = ['OUTPUT', p[2]]
 
 
 def p_error(expr):

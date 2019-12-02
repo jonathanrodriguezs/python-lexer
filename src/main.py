@@ -15,5 +15,5 @@ text = f.read()
 lexer = lex(module=lexer_rules)
 parser = yacc(module=parser_rules)
 
-expression = parser.parse("output 2")
+expression = parser.parse(text)
 print(expression)
