@@ -6,60 +6,54 @@ from lexer_rules import tokens
 
 
 def p_program_statements(p):
-    'program: statements .'
+    'program : statements "."'
     p[0] = p[1]
 
 
 def p_statements_statements(p):
-    '''
-        statements: statements ";" statement
-                  | statement
-    '''
-    if len(p) == 2:
-        p[0] = [p[1]]
-    else:
-        p[0] = p[1] + [p[3]]
+    'statements : statements ";" statement'
+    p[0] = p[1] + [p[3]]
 
 
 def p_statement_curly(p):
-    'statement: "{" statements "}"'
+    'statement : "{" statements "}"'
     p[0] = p[2]
 
 
 def p_statements_statement(p):
     '''
-      statements: statement
-                | assign-stat
-                | if-stat
-                | while-stat
-                | input-stat
-                | output-stat
-                | var-statement
+      statements : statement
+                 | assign-stat
+                 | if-stat
+                 | while-stat
+                 | input-stat
+                 | output-stat
+                 | var-statement
     '''
     p[0] = p[1]
 
 
 def p_var_statement_colon_ident(p):
-    'var-statement: var-statement "," IDENT'
+    'var-statement : var-statement "," IDENT'
 
 
 def p_var_statement_ident(p):
-    'var-statement: "var" IDENT'
+    'var-statement : VAR IDENT'
 
 
 def p_assin_stat(p):
-    'assign-stat: IDENT "=" expr'
+    'assign-stat : IDENT "=" expr'
 
 
 def p_expr_parens(p):
-    'expr: "(" expr ")"'
+    'expr : "(" expr ")"'
     p[0] = p[2]
 
 
 def p_expr_arith_operation(p):
     '''
-      expr: expr "+" value
-          | expr "-" value
+      expr : expr "+" value
+           | expr "-" value
     '''
     if p[2] == '+':
         p[0] = p[1] + p[3]
@@ -69,8 +63,8 @@ def p_expr_arith_operation(p):
 
 def p_expr_signed_value(p):
     '''
-      expr: "+" value
-          | "-" value
+      expr : "+" value
+           | "-" value
     '''
     if p[1] == '+':
         p[0] = p[2]
@@ -79,43 +73,43 @@ def p_expr_signed_value(p):
 
 
 def p_expr_value(p):
-    'expr: value'
+    'expr : value'
     p[0] = p[1]
 
 
 def p_value_ident(p):
     '''
-      value: IDENT
-           | CONST
+      value : IDENT
+            | CONST
     '''
     p[0] = p[1]
 
 
 def p_if_statement(p):
     '''
-      if-statement: if-then
-                  | if-then-else
+      if-stat : if-then
+              | if-then-else
     '''
     p[0] = p[1]
 
 
 def p_if_then(p):
-    'if-then: if-part THEN statement'
+    'if-then : if-part THEN statement'
 
 
 def p_if_then_else(p):
-    'if-then-else: if-then ELSE statement'
+    'if-then-else : if-then ELSE statement'
 
 
 def p_if_part(p):
-    'if-part: IF log-expr'
+    'if-part : IF log-expr'
 
 
 def p_log_expr(p):
     '''
-      log-expr: expr ">" expr
-              | expr "<" expr
-              | expr "==" expr
+      log-expr : expr ">" expr
+               | expr "<" expr
+               | expr EQUAL expr
     '''
     if p[2] == '>':
         p[0] = p[1] > p[3]
@@ -126,23 +120,23 @@ def p_log_expr(p):
 
 
 def p_while_stat(p):
-    'while-stat: while-part do-expr'
+    'while-stat : while-part do-expr'
 
 
 def p_while_part(p):
-    'while-part: WHILE log-expr'
+    'while-part : WHILE log-expr'
 
 
 def p_do_expr(p):
-    'do-expr: DO statement'
+    'do-expr : DO statement'
 
 
 def p_input_statement(p):
-    'input-stat: INPUT IDENT'
+    'input-stat : INPUT IDENT'
 
 
 def p_output_statement(p):
-    'output-stat: OUTPUT expr'
+    'output-stat : OUTPUT expr'
 
 
 def p_error(expr):
