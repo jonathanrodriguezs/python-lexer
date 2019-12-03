@@ -4,10 +4,13 @@ from lexer_rules import tokens
 # Non terminals are in lowercase
 # Terminals are in uppercase (tokens)
 
+variables = {}
+
 
 def p_program_statements(p):
     'program : statements "."'
     p[0] = p[1]
+    print(variables)
 
 
 def p_statements_statements(p):
@@ -39,16 +42,19 @@ def p_statements_statement(p):
 
 def p_var_statement_colon_ident(p):
     'var-statement : var-statement "," IDENT'
-    pass
+    p[0] = [p[1] + [p[3]]]
 
 
 def p_var_statement_ident(p):
     'var-statement : VAR IDENT'
-    pass
+    p[0] = ['VAR', p[2]]
+    variables[p[2]] = 0
 
 
 def p_assin_stat(p):
     'assign-stat : IDENT "=" expr'
+    print("+ Assigning variable", p[1], "to", p[3])
+    variables[p[1]] = p[3]
 
 
 def p_expr_parens(p):
@@ -83,12 +89,14 @@ def p_expr_value(p):
     p[0] = p[1]
 
 
-def p_value_ident(p):
-    '''
-      value : IDENT
-            | CONST
-    '''
+def p_value_const(p):
+    'value : CONST'
     p[0] = p[1]
+
+
+def p_value_ident(p):
+    'value : IDENT'
+    p[0] = variables[p[1]]
 
 
 def p_if_statement(p):
