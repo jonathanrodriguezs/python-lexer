@@ -1,10 +1,17 @@
 # Python LMC
 
+Dependencies: [ply](https://www.dabeaz.com/ply/)
+To install please run in a terminal:
+
+```bash
+python install ply
+```
+
 ## Run the project
 
 ### Native
 
-You must have Python 3+ installed in your machine. To install the libraries and run the script write the following in your command line:
+You must have Python 3+ installed in your machine. To install the libraries and run the script write the following in your command line if you don't have "ply":
 
 ```bash
 pip install -r requirements.txt

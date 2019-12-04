@@ -2,10 +2,11 @@ var a;
 var bc1;
 input a;
 input bc1;
-a = a + bc1;
+a = 3 + bc1;
 if a > 52 then {
   output a;
-  a = 40
-  }
-  # This is a comment
-.
+  a = 40;
+  output a
+} else {
+  output bc1
+}.
