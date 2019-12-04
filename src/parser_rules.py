@@ -91,7 +91,7 @@ def p_expr_value(p):
 
 def p_value_const(p):
     'value : CONST'
-    p[0] = p[1]
+    p[0] = int(p[1])
 
 
 def p_value_ident(p):
@@ -148,6 +148,7 @@ def p_do_expr(p):
 def p_input_statement(p):
     'input-stat : INPUT IDENT'
     p[0] = ['INPUT', p[2]]
+    variables[p[2]] = int(input("Valor de " + p[2] + ": "))
 
 
 def p_output_statement(p):
