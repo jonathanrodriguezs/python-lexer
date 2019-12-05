@@ -16,6 +16,14 @@ def convert_variables(p):
     return p
 
 
+def run_conditional(s):
+    if list(s) and type(s[0]) == tuple:
+        for subline in list(s):
+            run_line(subline)
+    else:
+        run_line(s)
+
+
 def evaluate(p):
     if type(p) == tuple and len(p) == 3:
         p = list(p)
@@ -54,11 +62,9 @@ def run_line(p):
     elif p[0] == 'IF':
         condition = evaluate(p[1])
         if condition:
-            for subline in list(p[2]):
-                run_line(subline)
+            run_conditional(p[2])
         elif len(p) == 5:
-            for subline in list(p[4]):
-                run_line(subline)
+            run_conditional(p[4])
 
 
 def run(program):
