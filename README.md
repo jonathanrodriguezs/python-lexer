@@ -1,13 +1,17 @@
 # Python LMC
 
+## Considerations
+
+This project is a parser based on the grammar described in the file lmc_syntax.tx, just consider that it ONLY HOLDS variables with NUMERIC values, not strings. Thanks.
+
 ## Run the project
 
 ### Native
 
-You must have Python 3+ installed in your machine. To install the libraries and run the script write the following in your command line:
+You must have Python 3+ installed in your machine. To install the required dependency ("ply") and run the script write the following in your command line:
 
 ```bash
-pip install -r requirements.txt
+pip install ply
 python src/main.py
 ```
 

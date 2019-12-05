@@ -1,7 +1,14 @@
 var a, bc1;
-input a; input bc1;
-a = a + bc1;
-if a > 52 then
+input a;
+input bc1;
+a = 3 + bc1;
+if a > 52 then {
+  output a;
+  a = 400;
   output a
-  # This is a comment
+} else output bc1;
+while a > 50 do {
+  output a;
+  input a
+}
 .
