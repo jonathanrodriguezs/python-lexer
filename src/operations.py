@@ -54,12 +54,14 @@ def run_line(p):
     elif p[0] == 'IF':
         condition = evaluate(p[1])
         if condition:
-            print(p[2])
             for subline in list(p[2]):
+                run_line(subline)
+        elif len(p) == 5:
+            for subline in list(p[4]):
                 run_line(subline)
 
 
 def run(program):
     for p in program:
         run_line(p)
-    print(variables)
+    print("\nVariables in the stack: ", variables)

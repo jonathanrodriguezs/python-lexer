@@ -16,4 +16,4 @@ lexer = lex(module=lexer_rules)
 parser = yacc(module=parser_rules)
 
 expression = parser.parse(text)
-print(expression)
+print("Tree of the program: ", expression)

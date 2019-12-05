@@ -7,6 +7,6 @@ if a > 52 then {
   output a;
   a = 40;
   output a
-} else {
+} else
   output bc1
-}.
+.
