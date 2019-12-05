@@ -65,6 +65,9 @@ def run_line(p):
             run_conditional(p[2])
         elif len(p) == 5:
             run_conditional(p[4])
+    elif p[0] == 'WHILE':
+        while evaluate(p[1]):
+            run_conditional(p[3])
 
 
 def run(program):

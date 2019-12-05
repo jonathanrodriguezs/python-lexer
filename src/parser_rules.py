@@ -132,7 +132,7 @@ def p_while_stat(p):
 
 def p_while_part(p):
     'while-part : WHILE log-expr'
-    p[0] = p[1]
+    p[0] = p[2]
 
 
 def p_do_expr(p):

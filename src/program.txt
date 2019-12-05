@@ -1,12 +1,14 @@
-var a;
-var bc1;
+var a, bc1;
 input a;
 input bc1;
 a = 3 + bc1;
 if a > 52 then {
   output a;
-  a = 40;
+  a = 400;
   output a
-} else
-  output bc1
+} else output bc1;
+while a > 50 do {
+  output a;
+  input a
+}
 .
