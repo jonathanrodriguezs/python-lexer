@@ -13,7 +13,7 @@ f = open(source_code, 'r')
 text = f.read()
 
 lexer = lex(module=lexer_rules)
-parser = yacc(module=parser_rules)
+parser = yacc(module=parser_rules, write_tables=False)
 
 expression = parser.parse(text)
 print("Tree of the program: ", expression)
