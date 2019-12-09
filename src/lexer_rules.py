@@ -32,7 +32,7 @@ def t_IDENT(t):
 
 # Complex lexical rules
 def t_CONST(token):
-    r'[1-9][0-9]*'
+    r'[0-9][0-9]*'
     token.value = int(token.value)
     return token
 
