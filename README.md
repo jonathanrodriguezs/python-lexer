@@ -33,3 +33,21 @@ If you want to run the main script in optimized mode (python -o), you must chang
 ```
 
 Then a file with the name lextab.py will be generated, containing all the regular expression attached to the docstring functions for complex lexical rules.
+
+## Program example
+
+```
+var iteration, i, x, y, z;
+input iteration;
+x = 0;
+y = 1;
+i = 0;
+while iteration > i do {
+  output x;
+  z = x + y;
+  # Modify values
+  x = y;
+  y = z;
+  i = i + 1
+}.
+```
