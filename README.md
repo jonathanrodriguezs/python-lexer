@@ -2,7 +2,7 @@
 
 ## Considerations
 
-This project is a parser based on the grammar described in the file lmc_syntax.tx, just consider that it ONLY HOLDS variables with NUMERIC values, not strings. Thanks.
+This project is a parser based on the grammar described in the file lmc_syntax.txt, just consider that it ONLY HOLDS variables with NUMERIC values.
 
 ## Run the project
 
