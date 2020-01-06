@@ -35,7 +35,7 @@ If you want to run the main script in optimized mode (python -o), you must chang
 Then a file with the name lextab.py will be generated, containing all the regular expression attached to the docstring functions for complex lexical rules.
 
 ## Program example
-
+An implementation of the Fibonacci sequence.
 ```
 var iteration, i, x, y, z;
 input iteration;
